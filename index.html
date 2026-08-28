@@ -1,0 +1,2447 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script>
+      document.documentElement.className += " js";
+    </script>
+    <title>Bible Church Mission — Southern California</title>
+    <meta
+      name="description"
+      content="Bible Church Mission glorifies God by developing healthy, reproducing churches throughout Southern California. An intercultural church development outreach of the Southern California Regional of IFCA International."
+    />
+    <link rel="icon" href="images/bcm-logo.png" type="image/png" />
+    <link rel="apple-touch-icon" href="images/bcm-logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    />
+    <style>
+      /* ============================================================
+   Bible Church Mission — Southern California
+   Design tokens
+   ============================================================ */
+      :root {
+        color-scheme: light;
+
+        /* Brand */
+        --navy-900: #08182e;
+        --navy-800: #0b2141;
+        --navy-700: #12305a;
+        --navy-600: #1b4275;
+        --gold-500: #c08a2e; /* fills, rules, borders — non-text use */
+        --gold-400: #d9a64a; /* gold text on navy — 8.05:1 */
+        --gold-200: #ebd3a0;
+        --gold-ink: #8c6114; /* gold TEXT on light surfaces — 5.5:1 on white, 5.1:1 on paper */
+
+        /* Navy-biased cool neutrals */
+        --paper: #f5f7fa;
+        --surface: #ffffff;
+        --surface-alt: #edf1f6;
+        --rule: #dce3ec;
+        --rule-strong: #c4cedc;
+        --ink: #0e1b2c;
+        --muted: #556477;
+        --muted-soft: #5f6c7e; /* 5.3:1 on white, 5.0:1 on paper */
+        --on-navy: #e7edf6;
+        --on-navy-soft: #a7b8ce;
+
+        /* Type */
+        --display:
+          "Newsreader", "Iowan Old Style", Georgia, "Times New Roman", serif;
+        --sans:
+          "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, Helvetica, Arial, sans-serif;
+
+        /* Scale */
+        --step--1: clamp(0.78rem, 0.76rem + 0.12vw, 0.85rem);
+        --step-0: clamp(1rem, 0.97rem + 0.16vw, 1.075rem);
+        --step-1: clamp(1.18rem, 1.12rem + 0.3vw, 1.35rem);
+        --step-2: clamp(1.45rem, 1.33rem + 0.6vw, 1.85rem);
+        --step-3: clamp(1.85rem, 1.6rem + 1.2vw, 2.6rem);
+        --step-4: clamp(2.3rem, 1.85rem + 2.2vw, 3.9rem);
+
+        /* Layout */
+        --wrap: 1220px;
+        --gutter: clamp(1.25rem, 4vw, 3rem);
+        --section-y: clamp(4rem, 8vw, 7.5rem);
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      html {
+        -webkit-text-size-adjust: 100%;
+        scroll-behavior: smooth;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+      }
+
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: var(--sans);
+        font-size: var(--step-0);
+        line-height: 1.65;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family: var(--display);
+        font-weight: 500;
+        line-height: 1.1;
+        letter-spacing: -0.01em;
+        text-wrap: balance;
+        margin: 0;
+      }
+      p {
+        margin: 0;
+        text-wrap: pretty;
+      }
+      img {
+        max-width: 100%;
+        display: block;
+      }
+      a {
+        color: inherit;
+      }
+
+      .wrap {
+        width: 100%;
+        max-width: var(--wrap);
+        margin-inline: auto;
+        padding-inline: var(--gutter);
+      }
+
+      /* Keep in-page anchors clear of the sticky header */
+      section[id],
+      div[id],
+      main[id] {
+        scroll-margin-top: 96px;
+      }
+      main:focus,
+      .way:focus {
+        outline: none;
+      }
+      @media (max-width: 1000px) {
+        section[id],
+        div[id],
+        main[id] {
+          scroll-margin-top: 1rem;
+        }
+      }
+
+      /* Accessibility helpers ------------------------------------- */
+      .visually-hidden {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        white-space: nowrap;
+        border: 0;
+      }
+      :focus-visible {
+        outline: 2px solid var(--gold-500);
+        outline-offset: 3px;
+        border-radius: 2px;
+      }
+      .skip {
+        position: absolute;
+        left: var(--gutter);
+        top: -100px;
+        z-index: 200;
+        background: var(--navy-800);
+        color: #fff;
+        padding: 0.7rem 1.1rem;
+        font-size: var(--step--1);
+        font-weight: 600;
+        transition: top 0.18s ease;
+      }
+      .skip:focus {
+        top: 0.75rem;
+      }
+
+      /* Shared type devices ---------------------------------------- */
+      .eyebrow {
+        font-size: var(--step--1);
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--gold-ink);
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+        margin: 0 0 1.15rem;
+      }
+      .eyebrow::before {
+        content: "";
+        width: 1.9rem;
+        height: 2px;
+        background: var(--gold-ink);
+        flex: none;
+      }
+      .eyebrow.on-navy {
+        color: var(--gold-400);
+      }
+      .eyebrow.on-navy::before {
+        background: var(--gold-400);
+      }
+
+      .lede {
+        font-size: var(--step-1);
+        color: var(--muted);
+        max-width: 62ch;
+        line-height: 1.6;
+      }
+
+      /* Buttons ---------------------------------------------------- */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.6rem;
+        font-family: var(--sans);
+        font-size: var(--step--1);
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        padding: 0.95rem 1.65rem;
+        border: 1.5px solid transparent;
+        text-decoration: none;
+        cursor: pointer;
+        transition:
+          background-color 0.18s ease,
+          color 0.18s ease,
+          border-color 0.18s ease,
+          transform 0.18s ease;
+      }
+      .btn:hover {
+        transform: translateY(-1px);
+      }
+      .btn svg {
+        width: 0.85em;
+        height: 0.85em;
+        flex: none;
+      }
+      .btn--gold {
+        background: var(--gold-500);
+        color: #1b1206;
+        border-color: var(--gold-500);
+      }
+      .btn--gold:hover {
+        background: var(--gold-400);
+        border-color: var(--gold-400);
+      }
+      .btn--navy {
+        background: var(--navy-800);
+        color: #fff;
+        border-color: var(--navy-800);
+      }
+      .btn--navy:hover {
+        background: var(--navy-700);
+        border-color: var(--navy-700);
+      }
+      .btn--ghost {
+        background: transparent;
+        color: var(--on-navy);
+        border-color: rgba(167, 184, 206, 0.5);
+      }
+      .btn--ghost:hover {
+        background: rgba(231, 237, 246, 0.1);
+        border-color: var(--on-navy);
+      }
+      .btn--outline {
+        background: transparent;
+        color: var(--navy-800);
+        border-color: var(--rule-strong);
+      }
+      .btn--outline:hover {
+        border-color: var(--navy-800);
+        background: var(--surface);
+      }
+
+      /* Text link with gold underline ------------------------------ */
+      .tlink {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: var(--step--1);
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+        color: var(--navy-700);
+        padding-bottom: 0.3rem;
+        border-bottom: 2px solid var(--gold-400);
+        transition:
+          gap 0.18s ease,
+          color 0.18s ease;
+      }
+      .tlink:hover {
+        gap: 0.85rem;
+        color: var(--navy-600);
+      }
+      .tlink svg {
+        width: 0.8em;
+        height: 0.8em;
+      }
+
+      /* ============================================================
+   IMAGE PLACEHOLDERS
+   Each .ph block below is marked in the HTML with the exact <img>
+   markup to paste in its place, including the alt text to write.
+   Rule of thumb for alt: describe what the photo SHOWS and why it
+   is on the page. If a photo is purely decorative and the nearby
+   text already says everything, use alt="" (empty, not missing) so
+   screen readers skip it rather than reading a filename.
+   ============================================================ */
+      .ph img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      /* Real photographs. Same framing the .ph placeholders had, so you can swap
+   a placeholder for <img class="media" ...> and nothing else moves.
+   object-fit:cover crops to fill the frame instead of squashing the photo. */
+      .media {
+        display: block;
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        background: var(--surface-alt);
+      }
+      .hero__media .media {
+        aspect-ratio: 4/5;
+      }
+      .mission__aside .media {
+        aspect-ratio: 3/4;
+      }
+      .help__media .media {
+        aspect-ratio: 5/4;
+      }
+      .post .media {
+        aspect-ratio: 16/10;
+      }
+      .ph {
+        position: relative;
+        overflow: hidden;
+        background-color: var(--surface-alt);
+        background-image: linear-gradient(
+          135deg,
+          rgba(27, 66, 117, 0.07) 25%,
+          transparent 25%,
+          transparent 50%,
+          rgba(27, 66, 117, 0.07) 50%,
+          rgba(27, 66, 117, 0.07) 75%,
+          transparent 75%,
+          transparent
+        );
+        background-size: 14px 14px;
+        border: 1px solid var(--rule-strong);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .ph--onnavy {
+        background-color: rgba(255, 255, 255, 0.05);
+        border-color: rgba(167, 184, 206, 0.35);
+        background-image: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.06) 25%,
+          transparent 25%,
+          transparent 50%,
+          rgba(255, 255, 255, 0.06) 50%,
+          rgba(255, 255, 255, 0.06) 75%,
+          transparent 75%,
+          transparent
+        );
+      }
+      .ph__tag {
+        font-family: var(--sans);
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--navy-700);
+        background: var(--surface);
+        border: 1px solid var(--rule-strong);
+        padding: 0.5rem 0.8rem;
+        text-align: center;
+        line-height: 1.5;
+        max-width: 85%;
+      }
+      .ph--onnavy .ph__tag {
+        color: var(--on-navy);
+        background: rgba(8, 24, 46, 0.8);
+        border-color: rgba(167, 184, 206, 0.4);
+      }
+
+      /* ============================================================
+   Header
+   ============================================================ */
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: var(--navy-900);
+        border-bottom: 1px solid rgba(167, 184, 206, 0.16);
+        transition: box-shadow 0.2s ease;
+      }
+      .site-header[data-scrolled="true"] {
+        box-shadow: 0 10px 30px -18px rgba(8, 24, 46, 0.9);
+      }
+      .header-bar {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        min-height: 78px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        text-decoration: none;
+        color: var(--on-navy);
+        margin-right: auto;
+      }
+      .brand__mark {
+        width: 52px;
+        height: 52px;
+        flex: none;
+        display: block;
+      }
+      @media (max-width: 560px) {
+        .brand__mark {
+          width: 44px;
+          height: 44px;
+        }
+      }
+      .brand__name {
+        font-family: var(--display);
+        font-size: 1.18rem;
+        font-weight: 600;
+        color: #fff;
+        line-height: 1.05;
+        letter-spacing: -0.01em;
+        display: block;
+      }
+      .brand__sub {
+        font-size: 0.63rem;
+        font-weight: 600;
+        letter-spacing: 0.19em;
+        text-transform: uppercase;
+        color: var(--on-navy-soft);
+        display: block;
+        margin-top: 0.22rem;
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        gap: 0.35rem;
+      }
+      .nav a {
+        text-decoration: none;
+        color: var(--on-navy);
+        font-size: 0.83rem;
+        font-weight: 500;
+        letter-spacing: 0.03em;
+        padding: 0.55rem 0.8rem;
+        position: relative;
+        white-space: nowrap;
+        transition: color 0.16s ease;
+      }
+      .nav a::after {
+        content: "";
+        position: absolute;
+        left: 0.8rem;
+        right: 0.8rem;
+        bottom: 0.28rem;
+        height: 2px;
+        background: var(--gold-400);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.2s ease;
+      }
+      .nav a:hover {
+        color: #fff;
+      }
+      .nav a:hover::after {
+        transform: scaleX(1);
+      }
+      .header-cta {
+        margin-left: 0.6rem;
+      }
+      /* .nav a is more specific than .btn--gold — restate the button's own colors */
+      .nav a.btn--gold {
+        color: #1b1206;
+      }
+      .nav a.btn--gold:hover {
+        color: #1b1206;
+      }
+      .nav a.btn::after {
+        display: none;
+      }
+
+      .nav-toggle {
+        display: none;
+        background: transparent;
+        border: 1px solid rgba(167, 184, 206, 0.4);
+        color: var(--on-navy);
+        width: 44px;
+        height: 44px;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        padding: 0;
+      }
+      .nav-toggle span {
+        display: block;
+        width: 18px;
+        height: 1.5px;
+        background: currentColor;
+        position: relative;
+        transition: background 0.15s ease;
+      }
+      .nav-toggle span::before,
+      .nav-toggle span::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        width: 18px;
+        height: 1.5px;
+        background: currentColor;
+        transition: transform 0.2s ease;
+      }
+      .nav-toggle span::before {
+        top: -6px;
+      }
+      .nav-toggle span::after {
+        top: 6px;
+      }
+      .nav-toggle[aria-expanded="true"] span {
+        background: transparent;
+      }
+      .nav-toggle[aria-expanded="true"] span::before {
+        transform: translateY(6px) rotate(45deg);
+      }
+      .nav-toggle[aria-expanded="true"] span::after {
+        transform: translateY(-6px) rotate(-45deg);
+      }
+
+      @media (max-width: 1000px) {
+        .nav-toggle {
+          display: flex;
+        }
+        .nav {
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 100%;
+          background: var(--navy-800);
+          flex-direction: column;
+          align-items: stretch;
+          gap: 0;
+          padding: 0.5rem var(--gutter) 1.5rem;
+          border-bottom: 1px solid rgba(167, 184, 206, 0.2);
+          display: none;
+        }
+        .nav[data-open="true"] {
+          display: flex;
+        }
+        .nav a {
+          padding: 1.05rem 0.2rem;
+          border-bottom: 1px solid rgba(167, 184, 206, 0.14);
+          font-size: 0.95rem;
+        }
+        .nav a::after {
+          display: none;
+        }
+        .header-cta {
+          margin: 1rem 0 0;
+        }
+        .site-header {
+          position: relative;
+        }
+      }
+
+      /* ============================================================
+   Hero
+   ============================================================ */
+      .hero {
+        background: var(--navy-900);
+        color: var(--on-navy);
+        position: relative;
+        overflow: hidden;
+      }
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background: radial-gradient(
+          70% 90% at 12% 0%,
+          rgba(27, 66, 117, 0.55) 0%,
+          transparent 62%
+        );
+      }
+      .hero__inner {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        grid-template-columns: 1.05fr 0.95fr;
+        gap: clamp(2rem, 5vw, 4.5rem);
+        align-items: center;
+        padding-block: clamp(3.5rem, 7vw, 6rem);
+      }
+      .hero__title {
+        font-size: clamp(2rem, 1.5rem + 1.9vw, 3.15rem);
+        color: #fff;
+        font-weight: 400;
+        letter-spacing: -0.022em;
+        line-height: 1.04;
+        margin-bottom: 1.5rem;
+      }
+      .hero__title em {
+        font-style: normal;
+        color: var(--gold-400);
+      }
+      .hero__text {
+        color: var(--on-navy-soft);
+        font-size: var(--step-1);
+        max-width: 46ch;
+        line-height: 1.6;
+      }
+      .hero__actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.85rem;
+        margin-top: 2.25rem;
+      }
+      .hero__meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem 1.5rem;
+        margin-top: 2.75rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid rgba(167, 184, 206, 0.22);
+        font-size: var(--step--1);
+        color: var(--on-navy-soft);
+      }
+      .hero__meta strong {
+        color: var(--on-navy);
+        font-weight: 600;
+      }
+
+      .hero__media {
+        position: relative;
+      }
+      .hero__media .ph {
+        aspect-ratio: 4/5;
+      }
+      .hero__badge {
+        position: absolute;
+        left: -1.5rem;
+        bottom: 2.25rem;
+        background: var(--gold-500);
+        color: #1b1206;
+        padding: 1.1rem 1.4rem;
+        max-width: 15rem;
+      }
+      .hero__badge span {
+        display: block;
+        font-size: 0.66rem;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        opacity: 0.72;
+      }
+      .hero__badge p {
+        font-family: var(--display);
+        font-size: 1.08rem;
+        line-height: 1.25;
+        margin-top: 0.35rem;
+        font-weight: 500;
+      }
+
+      @media (max-width: 900px) {
+        .hero__inner {
+          grid-template-columns: 1fr;
+          gap: 2.5rem;
+        }
+        .hero__media {
+          order: -1;
+        }
+        .hero__media .ph,
+        .hero__media .media {
+          aspect-ratio: 16/10;
+        }
+        .hero__badge {
+          left: 0;
+          bottom: -1rem;
+          max-width: none;
+          display: none;
+        }
+      }
+
+      /* ============================================================
+   Mission
+   ============================================================ */
+      .section {
+        padding-block: var(--section-y);
+      }
+      .section--white {
+        background: var(--surface);
+      }
+      .section--alt {
+        background: var(--paper);
+      }
+
+      .mission {
+        display: grid;
+        grid-template-columns: 0.85fr 1.15fr;
+        gap: clamp(2rem, 6vw, 5rem);
+        align-items: start;
+      }
+      .mission__statement {
+        font-family: var(--display);
+        font-size: var(--step-3);
+        font-weight: 400;
+        line-height: 1.24;
+        letter-spacing: -0.015em;
+        color: var(--ink);
+        margin: 0 0 1.75rem;
+      }
+      .mission__statement b {
+        font-weight: 500;
+        color: var(--navy-600);
+        font-style: italic;
+      }
+      .mission__body {
+        display: flex;
+        flex-direction: column;
+        gap: 1.15rem;
+        color: var(--muted);
+        max-width: 60ch;
+      }
+      .mission__aside .ph {
+        aspect-ratio: 3/4;
+      }
+      .mission__cite {
+        margin-top: 1.25rem;
+        font-size: var(--step--1);
+        color: var(--muted-soft);
+        border-left: 2px solid var(--gold-400);
+        padding-left: 0.9rem;
+        line-height: 1.55;
+      }
+      @media (max-width: 860px) {
+        .mission {
+          grid-template-columns: 1fr;
+        }
+        .mission__aside {
+          order: 2;
+        }
+        .mission__aside .ph,
+        .mission__aside .media {
+          aspect-ratio: 16/9;
+        }
+      }
+
+      /* ============================================================
+   Work / ministries
+   ============================================================ */
+      .section-head {
+        max-width: 56ch;
+        margin-bottom: clamp(2.5rem, 5vw, 3.75rem);
+      }
+      .section-head h2 {
+        font-size: var(--step-3);
+        margin-bottom: 1rem;
+      }
+
+      .grid-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
+        gap: 1px;
+        background: var(--rule);
+        border: 1px solid var(--rule);
+      }
+      .card {
+        background: var(--surface);
+        padding: clamp(1.75rem, 3vw, 2.5rem);
+        display: flex;
+        flex-direction: column;
+        gap: 0.9rem;
+        transition: background-color 0.2s ease;
+      }
+      .card:hover {
+        background: var(--paper);
+      }
+      .card__icon {
+        width: 34px;
+        height: 34px;
+        color: var(--gold-500);
+      }
+      .card h3 {
+        font-size: var(--step-1);
+        font-weight: 600;
+        letter-spacing: -0.005em;
+      }
+      .card p {
+        color: var(--muted);
+        font-size: 0.95rem;
+        line-height: 1.62;
+      }
+      .card__link {
+        margin-top: auto;
+        padding-top: 0.85rem;
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--navy-600);
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        transition: gap 0.18s ease;
+      }
+      .card__link:hover {
+        gap: 0.8rem;
+      }
+      .card__link svg {
+        width: 0.75em;
+        height: 0.75em;
+      }
+
+      /* ============================================================
+   Strategy principles
+   ============================================================ */
+      .principles {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
+        gap: clamp(1.5rem, 3vw, 2.5rem);
+      }
+      .principle {
+        padding-top: 1.25rem;
+        border-top: 1px solid var(--rule-strong);
+      }
+      .principle__n {
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        color: var(--gold-ink);
+        font-variant-numeric: tabular-nums;
+        display: block;
+        margin-bottom: 0.6rem;
+      }
+      .principle h3 {
+        font-size: var(--step-1);
+        font-weight: 600;
+        margin-bottom: 0.45rem;
+      }
+      .principle p {
+        color: var(--muted);
+        font-size: 0.94rem;
+        line-height: 1.6;
+      }
+
+      .grid-cards--5 {
+        grid-template-columns: repeat(6, 1fr);
+      }
+      .grid-cards--5 .card {
+        grid-column: span 2;
+      }
+      .grid-cards--5 .card:nth-child(4),
+      .grid-cards--5 .card:nth-child(5) {
+        grid-column: span 3;
+      }
+      @media (max-width: 900px) {
+        .grid-cards--5 {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .grid-cards--5 .card,
+        .grid-cards--5 .card:nth-child(4),
+        .grid-cards--5 .card:nth-child(5) {
+          grid-column: span 1;
+        }
+      }
+      @media (max-width: 560px) {
+        .grid-cards--5 {
+          grid-template-columns: 1fr;
+        }
+      }
+      .source-note {
+        margin-top: 1.5rem;
+        font-size: var(--step--1);
+        color: var(--muted);
+      }
+      .source-note a {
+        color: var(--navy-700);
+        text-underline-offset: 3px;
+      }
+
+      .giving-box {
+        margin-top: 1.75rem;
+        border-left: 3px solid var(--gold-500);
+        padding: 1rem 0 1rem 1.15rem;
+        background: var(--surface);
+      }
+      .giving-box__label {
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+        color: var(--gold-ink);
+        margin-bottom: 0.5rem;
+      }
+      .giving-box address {
+        font-style: normal;
+        line-height: 1.65;
+        color: var(--ink);
+      }
+      .help__title {
+        font-size: var(--step-3);
+        margin-bottom: 1.5rem;
+      }
+
+      .reslist {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1px;
+        background: var(--rule);
+        border: 1px solid var(--rule);
+        margin-bottom: clamp(2.5rem, 5vw, 4rem);
+      }
+      .res {
+        background: var(--surface);
+        padding: clamp(1.5rem, 2.5vw, 2rem);
+        text-decoration: none;
+        color: inherit;
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+        transition: background-color 0.2s ease;
+      }
+      .res:hover {
+        background: var(--paper);
+      }
+      .res:hover h3 {
+        color: var(--navy-600);
+      }
+      .res__type {
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--gold-ink);
+      }
+      .res h3 {
+        font-size: 1.12rem;
+        font-weight: 600;
+        line-height: 1.3;
+      }
+      .res p {
+        color: var(--muted);
+        font-size: 0.9rem;
+        line-height: 1.55;
+      }
+
+      .twocol {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: clamp(1.5rem, 3vw, 2.5rem);
+      }
+      .panel {
+        background: var(--paper);
+        border: 1px solid var(--rule);
+        padding: clamp(1.75rem, 3vw, 2.5rem);
+      }
+      .panel__lede {
+        color: var(--muted);
+        margin-bottom: 1.25rem;
+        font-size: 0.96rem;
+      }
+      .namelist,
+      .linklist {
+        list-style: none;
+        margin: 0 0 1.5rem;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      .namelist li {
+        font-weight: 600;
+        color: var(--ink);
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid var(--rule);
+      }
+      .namelist li:last-child {
+        border-bottom: 0;
+      }
+      .linklist a {
+        color: var(--navy-700);
+        font-weight: 600;
+        text-underline-offset: 3px;
+      }
+      .linklist a:hover {
+        color: var(--navy-600);
+      }
+      @media (max-width: 760px) {
+        .twocol {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .quoteband {
+        padding-block: clamp(3.5rem, 7vw, 5.5rem);
+        max-width: 62rem;
+      }
+      .quoteband__q {
+        margin: 0;
+      }
+      .quoteband__q p {
+        font-family: var(--display);
+        font-size: var(--step-3);
+        line-height: 1.28;
+        color: #fff;
+        font-weight: 400;
+        letter-spacing: -0.015em;
+      }
+      .quoteband__cite {
+        margin-top: 1.5rem;
+        font-size: var(--step--1);
+        color: var(--on-navy-soft);
+        letter-spacing: 0.02em;
+      }
+      .signup__addr {
+        margin-top: 1.5rem;
+        padding-top: 1.25rem;
+        border-top: 1px solid rgba(167, 184, 206, 0.25);
+        font-size: var(--step--1);
+        color: var(--on-navy-soft);
+      }
+
+      /* ============================================================
+   Stats band (retired — no verified figures published)
+   ============================================================ */
+      .band {
+        background: var(--navy-800);
+        color: var(--on-navy);
+      }
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: clamp(1.75rem, 4vw, 3rem);
+        padding-block: clamp(3rem, 6vw, 4.5rem);
+      }
+      .stat {
+        border-top: 2px solid var(--gold-500);
+        padding-top: 1.15rem;
+      }
+      .stat__num {
+        font-family: var(--display);
+        font-size: clamp(2.6rem, 5vw, 3.6rem);
+        font-weight: 400;
+        line-height: 1;
+        color: #fff;
+        font-variant-numeric: tabular-nums;
+        display: block;
+        letter-spacing: -0.02em;
+      }
+      .stat__num small {
+        font-size: 0.5em;
+        color: var(--gold-400);
+        margin-left: 0.06em;
+      }
+      .stat__label {
+        display: block;
+        margin-top: 0.7rem;
+        font-size: 0.82rem;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        color: var(--on-navy-soft);
+        line-height: 1.45;
+      }
+      .stats__note {
+        padding-bottom: clamp(2.5rem, 5vw, 3.5rem);
+        font-size: var(--step--1);
+        color: var(--on-navy-soft);
+        opacity: 0.8;
+        max-width: 70ch;
+        margin: 0;
+      }
+
+      /* ============================================================
+   Pathway / steps
+   ============================================================ */
+      .steps {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
+        gap: clamp(1.5rem, 3vw, 2.5rem);
+        counter-reset: step;
+      }
+      .step {
+        position: relative;
+        padding-top: 1.4rem;
+        border-top: 1px solid var(--rule-strong);
+      }
+      .step__n {
+        font-family: var(--sans);
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        color: var(--gold-ink);
+        font-variant-numeric: tabular-nums;
+        display: block;
+        margin-bottom: 0.7rem;
+      }
+      .step h3 {
+        font-size: var(--step-1);
+        font-weight: 600;
+        margin-bottom: 0.55rem;
+      }
+      .step p {
+        color: var(--muted);
+        font-size: 0.94rem;
+        line-height: 1.6;
+      }
+
+      /* ============================================================
+   Help / involvement split
+   ============================================================ */
+      .help {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: clamp(2rem, 5vw, 4rem);
+        align-items: center;
+      }
+      .help__media .ph {
+        aspect-ratio: 5/4;
+      }
+      .ways {
+        display: flex;
+        flex-direction: column;
+        margin-top: 2rem;
+        border-top: 1px solid var(--rule-strong);
+      }
+      .way {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 1.1rem;
+        padding: 1.4rem 0;
+        border-bottom: 1px solid var(--rule-strong);
+        align-items: start;
+      }
+      .way__icon {
+        width: 26px;
+        height: 26px;
+        color: var(--navy-600);
+        margin-top: 0.2rem;
+      }
+      .way h3 {
+        font-size: 1.08rem;
+        font-weight: 600;
+        margin-bottom: 0.3rem;
+        font-family: var(--sans);
+        letter-spacing: 0;
+      }
+      .way p {
+        color: var(--muted);
+        font-size: 0.93rem;
+        line-height: 1.6;
+      }
+      @media (max-width: 860px) {
+        .help {
+          grid-template-columns: 1fr;
+        }
+        .help__media .ph,
+        .help__media .media {
+          aspect-ratio: 16/9;
+        }
+      }
+
+      /* ============================================================
+   News
+   ============================================================ */
+      .news-head {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-bottom: clamp(2rem, 4vw, 3rem);
+      }
+      .news-head h2 {
+        font-size: var(--step-3);
+      }
+      .news {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: clamp(1.5rem, 3vw, 2.25rem);
+      }
+      .post {
+        display: flex;
+        flex-direction: column;
+        gap: 1.1rem;
+        text-decoration: none;
+        color: inherit;
+      }
+      .post .ph {
+        aspect-ratio: 16/10;
+        transition: border-color 0.2s ease;
+      }
+      .post:hover .ph {
+        border-color: var(--navy-600);
+      }
+      .post .post__meta {
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--gold-ink);
+        line-height: 1.5;
+      }
+      .post .post__meta span {
+        color: var(--muted-soft);
+        white-space: nowrap;
+        font-weight: 600;
+      }
+      .post h3 {
+        font-size: var(--step-1);
+        font-weight: 600;
+        line-height: 1.28;
+      }
+      .post:hover h3 {
+        color: var(--navy-600);
+      }
+      .post p {
+        color: var(--muted);
+        font-size: 0.93rem;
+        line-height: 1.6;
+      }
+
+      /* ============================================================
+   Newsletter CTA
+   ============================================================ */
+      .signup {
+        background: var(--navy-900);
+        color: var(--on-navy);
+        position: relative;
+        overflow: hidden;
+      }
+      .signup::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          60% 100% at 85% 30%,
+          rgba(192, 138, 46, 0.25) 0%,
+          transparent 65%
+        );
+      }
+      .signup__inner {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: clamp(2rem, 5vw, 4rem);
+        align-items: center;
+        padding-block: clamp(3.5rem, 7vw, 5.5rem);
+      }
+      .signup h2 {
+        font-size: var(--step-3);
+        color: #fff;
+        margin-bottom: 1rem;
+      }
+      .signup p {
+        color: var(--on-navy-soft);
+        max-width: 48ch;
+      }
+      .form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .field {
+        display: flex;
+        flex-direction: column;
+        gap: 0.45rem;
+      }
+      .field label {
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+        color: var(--on-navy);
+      }
+      .form input[aria-invalid="true"] {
+        border-color: #f0a9a9;
+      }
+
+      .hp {
+        position: absolute;
+        left: -9999px;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+      }
+      .form button[aria-busy="true"] {
+        opacity: 0.7;
+        cursor: progress;
+      }
+      .form button[disabled] {
+        opacity: 0.7;
+        cursor: not-allowed;
+      }
+      .form__row {
+        display: flex;
+        gap: 0.6rem;
+        flex-wrap: wrap;
+      }
+      .form input {
+        width: 100%;
+        min-width: 0;
+        background: rgba(255, 255, 255, 0.07);
+        border: 1px solid rgba(167, 184, 206, 0.4);
+        color: #fff;
+        font-family: var(--sans);
+        font-size: 0.95rem;
+        padding: 0.95rem 1.1rem;
+      }
+      .form__row input {
+        flex: 1 1 15rem;
+        width: auto;
+      }
+      .form input::placeholder {
+        color: var(--on-navy-soft);
+        opacity: 0.75;
+      }
+      .form input:focus {
+        border-color: var(--gold-400);
+        background: rgba(255, 255, 255, 0.1);
+      }
+      .form small {
+        font-size: 0.78rem;
+        color: var(--on-navy-soft);
+        opacity: 0.8;
+      }
+      .form__status {
+        font-size: 0.85rem;
+        color: var(--gold-200);
+        min-height: 1.2em;
+      }
+      @media (max-width: 860px) {
+        .signup__inner {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* ============================================================
+   Footer
+   ============================================================ */
+      .site-footer {
+        background: var(--navy-900);
+        color: var(--on-navy-soft);
+        border-top: 1px solid rgba(167, 184, 206, 0.16);
+        font-size: 0.92rem;
+      }
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1.4fr repeat(3, 1fr);
+        gap: clamp(2rem, 4vw, 3rem);
+        padding-block: clamp(3rem, 6vw, 4.5rem);
+      }
+      .footer-brand .brand {
+        margin-bottom: 1.15rem;
+      }
+      .footer-brand p {
+        max-width: 34ch;
+        line-height: 1.65;
+      }
+      .footer-col h3 {
+        font-family: var(--sans);
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--on-navy);
+        margin-bottom: 1.1rem;
+      }
+      .footer-col ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+      }
+      .footer-col a {
+        text-decoration: none;
+        transition: color 0.16s ease;
+      }
+      .footer-col a:hover {
+        color: #fff;
+      }
+      .footer-col address {
+        font-style: normal;
+        line-height: 1.7;
+      }
+      .socials {
+        display: flex;
+        gap: 0.6rem;
+        margin-top: 1.5rem;
+      }
+      .socials a {
+        width: 38px;
+        height: 38px;
+        border: 1px solid rgba(167, 184, 206, 0.35);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition:
+          border-color 0.16s ease,
+          color 0.16s ease;
+      }
+      .socials a:hover {
+        border-color: var(--gold-400);
+        color: var(--gold-400);
+      }
+      .socials svg {
+        width: 16px;
+        height: 16px;
+      }
+      .footer-base {
+        border-top: 1px solid rgba(167, 184, 206, 0.16);
+        padding-block: 1.6rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem 1.75rem;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.82rem;
+      }
+      .footer-base ul {
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.25rem;
+        margin: 0;
+        padding: 0;
+      }
+      .footer-base a {
+        text-decoration: none;
+      }
+      .footer-base a:hover {
+        color: #fff;
+      }
+      @media (max-width: 860px) {
+        .footer-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      @media (max-width: 560px) {
+        .footer-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* ============================================================
+   Scroll reveal
+   ============================================================ */
+      /* Hidden only when JS is running — content stays visible if scripts fail. */
+      .js .reveal {
+        opacity: 0;
+        transform: translateY(18px);
+        transition:
+          opacity 0.7s cubic-bezier(0.22, 0.61, 0.36, 1),
+          transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+      }
+      .js .reveal.is-in {
+        opacity: 1;
+        transform: none;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .js .reveal {
+          opacity: 1;
+          transform: none;
+          transition: none;
+        }
+        .btn:hover {
+          transform: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to main content</a>
+
+    <!-- ============================ HEADER ============================ -->
+    <header class="site-header" id="siteHeader">
+      <div class="wrap header-bar">
+        <a class="brand" href="#top" aria-label="Bible Church Mission, home">
+          <img
+            class="brand__mark"
+            src="images/bcm-logo-removebg-preview.png"
+            width="348"
+            height="349"
+            alt=""
+            decoding="async"
+          />
+          <span>
+            <span class="brand__name">Bible Church Mission</span>
+            <span class="brand__sub">Southern California</span>
+          </span>
+        </a>
+
+        <button
+          class="nav-toggle"
+          id="navToggle"
+          aria-expanded="false"
+          aria-controls="primaryNav"
+          aria-label="Open main menu"
+        >
+          <span aria-hidden="true"></span>
+        </button>
+
+        <nav class="nav" id="primaryNav" aria-label="Primary">
+          <a href="#mission">Our Purpose</a>
+          <a href="#start">Bible Churches</a>
+          <a href="#work">Strategy</a>
+          <a href="#news">Documents</a>
+          <a href="#help">How Can I Help?</a>
+          <a href="#signupForm">Contact</a>
+          <a class="btn btn--gold header-cta" href="#give">Give</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" tabindex="-1">
+      <!-- ============================ HERO ============================ -->
+      <section class="hero" id="top">
+        <div class="wrap hero__inner">
+          <div>
+            <p class="eyebrow">InterCultural Church Development Agency</p>
+            <h1 class="hero__title">
+              Glorify God by developing
+              <em>healthy reproducing churches</em> throughout the Southern
+              California areas.
+            </h1>
+            <p class="hero__text">
+              BCM is an InterCultural Church Development agency. If this
+              statement gets you excited about ministry — read on. You too can
+              be a part of this ministry in the Southern California area.
+            </p>
+            <div class="hero__actions">
+              <a class="btn btn--gold" href="#help"
+                >Where can I help?
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path
+                    d="M2 8h11M9 4l4 4-4 4"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </a>
+              <a class="btn btn--ghost" href="#start">How do I get started?</a>
+            </div>
+            <p class="hero__meta">
+              <span
+                ><strong>An outreach of</strong> the Southern California
+                Regional of IFCA International</span
+              >
+            </p>
+          </div>
+
+          <div class="hero__media">
+            <img
+              class="media"
+              src="images/CommunityGathering.jpg"
+              width="1200"
+              height="1500"
+              fetchpriority="high"
+              decoding="async"
+              alt="Members of a Bible Church Mission congregation gathered together in community"
+            />
+            <div class="hero__badge">
+              <span>Our purpose</span>
+              <p>
+                Take a look around and see where
+                <em
+                  style="
+                    font-style: normal;
+                    text-decoration: underline;
+                    text-underline-offset: 3px;
+                  "
+                  >you</em
+                >
+                fit in.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================ PURPOSE ============================ -->
+      <section class="section section--white" id="mission">
+        <div class="wrap mission reveal">
+          <div class="mission__aside">
+            <!-- REPLACE with: <img class="media" src="images/YOURPHOTO.jpg" width="900" height="1200"
+             loading="lazy" decoding="async" alt="Describe what this photo shows"> -->
+            <div class="ph">
+              <span class="ph__tag" aria-hidden="true"
+                >Photo · 900 × 1200<br />Suggested: church planter or
+                congregation</span
+              >
+            </div>
+            <p class="mission__cite">
+              Bible Church Mission is an outreach of the Southern California
+              Regional of IFCA International.
+            </p>
+          </div>
+
+          <div>
+            <p class="eyebrow">Our purpose</p>
+            <h2 class="mission__statement">
+              To glorify God by
+              <b>making disciples and planting sound Biblical churches</b> in
+              each area of the Southern California regional of IFCA
+              International.
+            </h2>
+            <div class="mission__body">
+              <p>
+                That work reaches
+                <strong
+                  >among each of the various ethnic, cultural and language
+                  groups</strong
+                >
+                of the region — which is why BCM describes itself as an
+                InterCultural Church Development agency rather than simply a
+                church planting one.
+              </p>
+              <p>
+                BCM is a faith-based ministry, reliant upon the Lord to provide
+                through His people for the financial needs of this ministry. It
+                is a 501(c)(3) nonprofit, and contributions are tax-deductible.
+              </p>
+              <p>
+                The board that guides this work represents over 200 collective
+                years in career ministry.
+              </p>
+            </div>
+            <p style="margin-top: 1.75rem">
+              <a class="tlink" href="bcmdoc.html"
+                >Read “Bible Church Mission — A Closer Look”
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path
+                    d="M2 8h11M9 4l4 4-4 4"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </a>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================ STRATEGY ============================ -->
+      <section class="section section--alt" id="work">
+        <div class="wrap">
+          <div class="section-head reveal">
+            <p class="eyebrow">Church planting strategy</p>
+            <h2>Nine principles that shape the work</h2>
+            <p class="lede">
+              BCM's church planting strategy is set out in “Bible Church Mission
+              — A Closer Look,” available in English and Spanish.
+            </p>
+          </div>
+
+          <div class="principles reveal">
+            <div class="principle">
+              <span class="principle__n">01</span>
+              <h3>Primary Purpose</h3>
+              <p>Glorify God through making disciples and planting churches.</p>
+            </div>
+            <div class="principle">
+              <span class="principle__n">02</span>
+              <h3>Visionary Scope</h3>
+              <p>Look to the next city or town.</p>
+            </div>
+            <div class="principle">
+              <span class="principle__n">03</span>
+              <h3>People Priority</h3>
+              <p>People come before programs, land, or buildings.</p>
+            </div>
+            <div class="principle">
+              <span class="principle__n">04</span>
+              <h3>Evangelism Focus</h3>
+              <p>
+                Reach the lost, rather than transfer members between churches.
+              </p>
+            </div>
+            <div class="principle">
+              <span class="principle__n">05</span>
+              <h3>Cultural Approach</h3>
+              <p>Reach people in their own language and culture.</p>
+            </div>
+            <div class="principle">
+              <span class="principle__n">06</span>
+              <h3>Varied Methods</h3>
+              <p>Use multiple approaches to start new churches.</p>
+            </div>
+            <div class="principle">
+              <span class="principle__n">07</span>
+              <h3>Sponsoring Church Support</h3>
+              <p>Include partnering churches in the work.</p>
+            </div>
+            <div class="principle">
+              <span class="principle__n">08</span>
+              <h3>Equipping Saints</h3>
+              <p>Edify and equip believers for the work of ministry.</p>
+            </div>
+            <div class="principle">
+              <span class="principle__n">09</span>
+              <h3>IFCA Association</h3>
+              <p>
+                Work toward new churches associating with IFCA International.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================ PURPOSE BAND ============================ -->
+      <section class="band">
+        <div class="wrap quoteband reveal">
+          <p class="eyebrow on-navy">What a purpose statement does</p>
+          <blockquote class="quoteband__q">
+            <p>
+              “Glorify God by Developing Healthy Reproducing Churches throughout
+              the Southern California areas.”
+            </p>
+          </blockquote>
+          <p class="quoteband__cite">
+            Bible Church Mission · an outreach of the Southern California
+            Regional of IFCA International
+          </p>
+        </div>
+      </section>
+
+      <!-- ============================ BIBLE CHURCHES ============================ -->
+      <section class="section section--white" id="start">
+        <div class="wrap">
+          <div class="section-head reveal">
+            <p class="eyebrow">What is a “Bible Church”?</p>
+            <h2>Five marks of a Bible church</h2>
+            <p class="lede">
+              Labels establish identity and offer clarity amid many religious
+              options. Not every congregation with these convictions carries
+              “Bible” in its name.
+            </p>
+          </div>
+
+          <div class="grid-cards grid-cards--5 reveal">
+            <article class="card">
+              <h3>Conservatively Identified</h3>
+              <p>
+                Bible churches identify with the conservative movement within
+                Christianity, holding to high standards of morality and ethics
+                that are taken from the Bible. Scripture is the standard by
+                which life is measured.
+              </p>
+            </article>
+            <article class="card">
+              <h3>Voluntarily Supported</h3>
+              <p>
+                Independent and self-determining, Bible churches are
+                self-supporting. Members give voluntarily and proportionally to
+                sustain local and worldwide mission efforts.
+              </p>
+            </article>
+            <article class="card">
+              <h3>Uniquely Organized</h3>
+              <p>
+                Each congregation establishes its own governance without
+                denominational oversight. Many begin as Bible study groups and
+                connect through fellowships such as IFCA International.
+              </p>
+            </article>
+            <article class="card">
+              <h3>Biblically Balanced</h3>
+              <p>
+                Doctrinal fundamentals are held firmly while remaining
+                responsive to contemporary concerns — spiritual conviction
+                alongside social awareness.
+              </p>
+            </article>
+            <article class="card">
+              <h3>Mutually Committed</h3>
+              <p>
+                These are imperfect congregations marked by shared dedication to
+                God and genuine love among believers.
+              </p>
+            </article>
+          </div>
+
+          <p class="source-note reveal">
+            Adapted from
+            <a href="https://www.ifca.org" target="_blank">IFCA International</a
+            >.
+          </p>
+        </div>
+      </section>
+
+      <!-- ============================ WHERE CAN I HELP ============================ -->
+      <section class="section section--alt" id="help">
+        <div class="wrap help reveal">
+          <div class="help__media">
+            <!-- REPLACE with: <img class="media" src="images/YOURPHOTO.jpg" width="1000" height="800"
+             loading="lazy" decoding="async" alt="Describe what this photo shows"> -->
+            <div class="ph">
+              <span class="ph__tag" aria-hidden="true"
+                >Photo · 1000 × 800<br />Suggested: people serving
+                together</span
+              >
+            </div>
+          </div>
+          <div>
+            <p class="eyebrow">Where can I help?</p>
+            <h2 class="help__title">Four ways to be part of this ministry</h2>
+
+            <div class="ways">
+              <div class="way">
+                <svg
+                  class="way__icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M12 21s-8-4.9-8-10.4A4.6 4.6 0 0112 8a4.6 4.6 0 018 2.6C20 16.1 12 21 12 21z"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+                <div>
+                  <h3>Praying</h3>
+                  <p>
+                    Pray for this ministry. Current prayer requests and praises
+                    come through the newsletter or the email prayer letter —
+                    contact the office to be added.
+                  </p>
+                </div>
+              </div>
+              <div class="way" id="give" tabindex="-1">
+                <svg
+                  class="way__icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M3 8h18v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M3 12h18M8 8V5a2 2 0 012-2h4a2 2 0 012 2v3"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                  />
+                </svg>
+                <div>
+                  <h3>Giving</h3>
+                  <p>
+                    BCM is a faith-based ministry, reliant upon the Lord to
+                    provide through His people for the financial needs of this
+                    ministry. BCM is a 501(c)(3) and gifts are tax-deductible.
+                  </p>
+                </div>
+              </div>
+              <div class="way">
+                <svg
+                  class="way__icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M16 20v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                  />
+                  <circle
+                    cx="9"
+                    cy="7"
+                    r="3.2"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                  />
+                  <path
+                    d="M17 4.2a3.2 3.2 0 010 5.9M22 20v-2a4 4 0 00-3-3.8"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                  />
+                </svg>
+                <div>
+                  <h3>Serving</h3>
+                  <p>
+                    BCM is looking for people interested in helping develop new
+                    churches or supporting growing congregations. Contact the
+                    BCM office.
+                  </p>
+                </div>
+              </div>
+              <div class="way">
+                <svg
+                  class="way__icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M6 6h20v16H14l-6 5v-5H6z"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linejoin="round"
+                    transform="scale(0.75)"
+                  />
+                </svg>
+                <div>
+                  <h3>Encouraging</h3>
+                  <p>
+                    Support pastors and church leaders through spiritual
+                    encouragement and prayer.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="giving-box">
+              <p class="giving-box__label">Send contributions to</p>
+              <address>
+                Bible Church Mission<br />
+                P.O. Box 424<br />
+                Downey, CA 90241-0424
+              </address>
+            </div>
+
+            <p style="margin-top: 1.75rem">
+              <a class="tlink" href="help.html"
+                >More on how you can help
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path
+                    d="M2 8h11M9 4l4 4-4 4"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </a>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================ DOCUMENTS & NETWORK ============================ -->
+      <section class="section section--white" id="news">
+        <div class="wrap">
+          <div class="section-head reveal">
+            <p class="eyebrow">Documents &amp; resources</p>
+            <h2>Read the strategy, then take the next step</h2>
+          </div>
+
+          <div class="reslist reveal">
+            <a class="res" href="/documents/BCM-ACloserLook.pdf">
+              <span class="res__type">PDF · 114K</span>
+              <h3>Bible Church Mission — A Closer Look</h3>
+              <p>
+                BCM's statement of faith, purpose statement, and church planting
+                strategy.
+              </p>
+            </a>
+            <a
+              class="res"
+              href="/documents/BCM-ACloserLookSpanish.pdf"
+              hreflang="es"
+            >
+              <span class="res__type">PDF · 85K · Español</span>
+              <h3>La Estrategia de Plantando Iglesias</h3>
+              <p>“A Closer Look” in Spanish.</p>
+            </a>
+            <a
+              class="res"
+              href="https://sveq.org/"
+              rel="noopener"
+              target="_blank"
+            >
+              <span class="res__type">External</span>
+              <h3>Serve and Equip</h3>
+              <p>Free Bible training resources.</p>
+            </a>
+            <a
+              class="res"
+              href="https://sveq.org/topical/DLA_CHURCHPLANTDISCIPLE-T0-0069.pdf"
+              rel="noopener"
+            >
+              <span class="res__type">PDF · External</span>
+              <h3>Church Planting through Disciple Making</h3>
+              <p>Training material on planting churches by making disciples.</p>
+            </a>
+          </div>
+
+          <div class="twocol reveal">
+            <div class="panel">
+              <p class="eyebrow">Board of Directors</p>
+              <p class="panel__lede">
+                The current BCM board consists of men representing over 200
+                collective years in career ministry.
+              </p>
+              <ul class="namelist">
+                <li>Al R. Granados</li>
+                <li>Ryan Day</li>
+                <li>Carey Barnett</li>
+                <li>David Abeyta</li>
+                <li>Miguel Anaya</li>
+                <li>Wayne Wilson</li>
+                <li>Karl Hermann</li>
+              </ul>
+              <a class="tlink" href="board.html"
+                >Board of Directors
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path
+                    d="M2 8h11M9 4l4 4-4 4"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </a>
+            </div>
+
+            <div class="panel">
+              <p class="eyebrow">The wider network</p>
+              <p class="panel__lede">
+                BCM is one of three regional church extension ministries within
+                IFCA International.
+              </p>
+              <ul class="linklist">
+                <li>
+                  <a href="https://www.ifca.org" rel="noopener"
+                    >IFCA International</a
+                  >
+                </li>
+                <li>
+                  <a href="https://www.nicechurchplanters.org" rel="noopener"
+                    >IFCA — Northwest Independent Church Extension</a
+                  >
+                </li>
+                <li>
+                  <a href="https://www.ifcamce.org/" rel="noopener"
+                    >IFCA — Midwest Church Extension</a
+                  >
+                </li>
+                <li>
+                  <a href="https://www.biblegateway.com" rel="noopener"
+                    >BibleGateway</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================ NEWSLETTER ============================
+       NOTE: the current bcmsocal.org has no newsletter online. It says:
+       "To request our current newsletter please contact the BCM Main office."
+       The form below is a MODERNISATION, not existing content — it needs to be
+       wired to a real mail handler or list provider before launch, or replaced
+       with a plain mailto: link. Nothing is submitted anywhere right now.
+       ============================================================ -->
+      <section class="signup">
+        <div class="wrap signup__inner reveal">
+          <div>
+            <p class="eyebrow on-navy">Newsletter &amp; prayer letter</p>
+            <h2>Request the current newsletter</h2>
+            <p>
+              BCM publishes a newsletter and an email prayer letter carrying
+              current prayer requests and praises. Ask the main office to add
+              you to either one.
+            </p>
+            <p class="signup__addr">
+              Bible Church Mission · P.O. Box 424 · Downey, CA 90241-0424
+            </p>
+          </div>
+          <form
+            class="form"
+            id="signupForm"
+            action="https://api.web3forms.com/submit"
+            method="POST"
+          >
+            <!-- Replace with your key from web3forms.com -->
+            <input
+              type="hidden"
+              name="access_key"
+              value="c3f42b46-d72c-42a5-bce5-d0e441dd02ef"
+            />
+            <input
+              type="hidden"
+              name="subject"
+              value="Newsletter request from bcmsocal.org"
+            />
+            <input type="hidden" name="from_name" value="BCM Website" />
+
+            <div class="hp" aria-hidden="true">
+              <label for="signupCompany">Leave this field empty</label>
+              <input
+                type="text"
+                id="signupCompany"
+                name="botcheck"
+                tabindex="-1"
+                autocomplete="off"
+              />
+            </div>
+            <div class="field">
+              <label for="signupName">Your name</label>
+              <input
+                type="text"
+                id="signupName"
+                name="name"
+                autocomplete="name"
+              />
+              <input
+                type="hidden"
+                name="access_key"
+                value="c3f42b46-d72c-42a5-bce5-d0e441dd02ef"
+              />
+            </div>
+            <div class="field">
+              <label for="signupEmail">Email address</label>
+              <div class="form__row">
+                <input
+                  type="email"
+                  id="signupEmail"
+                  name="email"
+                  autocomplete="email"
+                  required
+                  aria-required="true"
+                  aria-describedby="formStatus signupNote"
+                />
+                <button class="btn btn--gold" type="submit" id="signupSubmit">
+                  Request
+                </button>
+              </div>
+            </div>
+            <p
+              class="form__status"
+              id="formStatus"
+              role="status"
+              aria-live="polite"
+            ></p>
+            <small id="signupNote"
+              >Your address goes to the BCM office only.</small
+            >
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- ============================ FOOTER ============================ -->
+    <footer class="site-footer" id="footer">
+      <div class="wrap footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="#top" aria-label="Bible Church Mission, home">
+            <img
+              class="brand__mark"
+              src="images/bcm-logo-removebg-preview.png"
+              width="348"
+              height="349"
+              alt=""
+              decoding="async"
+            />
+            <span>
+              <span class="brand__name">Bible Church Mission</span>
+              <span class="brand__sub">Southern California</span>
+            </span>
+          </a>
+          <p>
+            An intercultural church development outreach of the Southern
+            California Regional of IFCA International.
+          </p>
+          <div class="socials">
+            <a href="#footer" aria-label="Facebook"
+              ><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path
+                  d="M14 9h3V6h-3c-2.2 0-4 1.8-4 4v2H8v3h2v7h3v-7h3l1-3h-4v-2c0-.6.4-1 1-1z"
+                /></svg
+            ></a>
+            <a href="#footer" aria-label="YouTube"
+              ><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path
+                  d="M22 12s0-3.2-.4-4.7a2.5 2.5 0 00-1.8-1.8C18.3 5 12 5 12 5s-6.3 0-7.8.5a2.5 2.5 0 00-1.8 1.8C2 8.8 2 12 2 12s0 3.2.4 4.7c.2.9.9 1.6 1.8 1.8C5.7 19 12 19 12 19s6.3 0 7.8-.5a2.5 2.5 0 001.8-1.8C22 15.2 22 12 22 12zM10 15V9l5.2 3z"
+                /></svg
+            ></a>
+            <a href="#footer" aria-label="Email BCM"
+              ><svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <rect
+                  x="2.5"
+                  y="5"
+                  width="19"
+                  height="14"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                />
+                <path
+                  d="M3 6l9 7 9-7"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                /></svg
+            ></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h3>Explore</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="biblech.html">What is a Bible Church?</a></li>
+            <li><a href="news.html">Current Newsletter</a></li>
+            <li><a href="board.html">Board of Directors</a></li>
+            <li><a href="bcmdoc.html">BCM Documents</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Get involved</h3>
+          <ul>
+            <li><a href="help.html">How can I Help?</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="resources.html">Resources and Links</a></li>
+            <li>
+              <a href="https://www.ifca.org" rel="noopener"
+                >IFCA International</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Contact</h3>
+          <address>
+            Bible Church Mission<br />
+            P.O. Box 424<br />
+            Downey, CA 90241-0424<br /><br />
+            <!-- The current site publishes no phone or email address.
+             Add them here if BCM wants them public. -->
+            <a href="mailto:office@bcmsocal.org">Email Us</a>
+          </address>
+        </div>
+      </div>
+
+      <div class="wrap footer-base">
+        <p>
+          © <span id="year">2026</span> Bible Church Mission. All rights
+          reserved.
+        </p>
+        <ul>
+          <li><a href="docs/pur-bcm.pdf">Statement of Faith</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li>
+            <a href="https://www.ifca.org" rel="noopener">IFCA International</a>
+          </li>
+        </ul>
+      </div>
+    </footer>
+
+    <script>
+      (function () {
+        "use strict";
+
+        /* ---- Mobile navigation ---- */
+        var toggle = document.getElementById("navToggle");
+        var nav = document.getElementById("primaryNav");
+
+        toggle.addEventListener("click", function () {
+          var open = toggle.getAttribute("aria-expanded") === "true";
+          toggle.setAttribute("aria-expanded", String(!open));
+          toggle.setAttribute(
+            "aria-label",
+            open ? "Open main menu" : "Close main menu",
+          );
+          nav.setAttribute("data-open", String(!open));
+        });
+
+        nav.addEventListener("click", function (e) {
+          if (e.target.closest("a") && window.innerWidth <= 1000) {
+            toggle.setAttribute("aria-expanded", "false");
+            toggle.setAttribute("aria-label", "Open main menu");
+            nav.setAttribute("data-open", "false");
+          }
+        });
+
+        document.addEventListener("keydown", function (e) {
+          if (
+            e.key === "Escape" &&
+            toggle.getAttribute("aria-expanded") === "true"
+          ) {
+            toggle.setAttribute("aria-expanded", "false");
+            toggle.setAttribute("aria-label", "Open main menu");
+            nav.setAttribute("data-open", "false");
+            toggle.focus();
+          }
+        });
+
+        /* ---- Header shadow on scroll ---- */
+        var header = document.getElementById("siteHeader");
+        var onScroll = function () {
+          header.setAttribute("data-scrolled", String(window.scrollY > 12));
+        };
+        window.addEventListener("scroll", onScroll, { passive: true });
+        onScroll();
+
+        /* ---- Current year ---- */
+        document.getElementById("year").textContent = String(
+          new Date().getFullYear(),
+        );
+        /* ---- Reveal on scroll ---- */
+        if ("IntersectionObserver" in window) {
+          var io = new IntersectionObserver(
+            function (entries) {
+              entries.forEach(function (entry) {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add("is-in");
+                io.unobserve(entry.target);
+              });
+            },
+            { threshold: 0.15, rootMargin: "0px 0px -60px 0px" },
+          );
+          document.querySelectorAll(".reveal").forEach(function (el) {
+            io.observe(el);
+          });
+        } else {
+          document.querySelectorAll(".reveal").forEach(function (el) {
+            el.classList.add("is-in");
+          });
+        }
+
+        /* ---- Newsletter form (front-end only — wire to your provider) ---- */
+        var form = document.getElementById("signupForm");
+        var status = document.getElementById("formStatus");
+        var submitBtn = document.getElementById("signupSubmit");
+        var ENDPOINT = form.getAttribute("action");
+
+        // Turn off native validation ONLY when scripting is available, so this
+        // handler owns the messaging (styled, and announced to screen readers).
+        // With JS off the browser's own required-field check still applies.
+        form.setAttribute("novalidate", "novalidate");
+        var FALLBACK =
+          "Something went wrong sending that. Please email the BCM office directly, or write to P.O. Box 424, Downey, CA 90241-0424.";
+
+        function say(msg, urgent) {
+          status.setAttribute("aria-live", urgent ? "assertive" : "polite");
+          status.textContent = msg;
+        }
+
+        function busy(on) {
+          submitBtn.disabled = on;
+          submitBtn.setAttribute("aria-busy", String(on));
+          submitBtn.textContent = on ? "Sending…" : "Request";
+        }
+
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          var email = document.getElementById("signupEmail");
+          if (!email.value || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+            email.setAttribute("aria-invalid", "true");
+            say(
+              "Enter a valid email address so we know where to send the newsletter.",
+              true,
+            );
+            email.focus();
+            return;
+          }
+          email.removeAttribute("aria-invalid");
+
+          // Honeypot tripped — pretend success so the bot does not learn anything.
+          if (form.botcheck && form.botcheck.value) {
+            say("Thanks — your request has been sent.");
+            form.reset();
+            return;
+          }
+
+          busy(true);
+          say("Sending your request…");
+
+          var payload = Object.fromEntries(new FormData(form).entries());
+
+          fetch(ENDPOINT, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+            body: JSON.stringify(payload),
+          })
+            .then(function (res) {
+              return res.json().then(function (d) {
+                return { ok: res.ok, data: d };
+              });
+            })
+            .then(function (r) {
+              if (r.ok && r.data && r.data.success !== false) {
+                say(
+                  "Thanks — your request has been sent. Someone from the BCM office will be in touch.",
+                );
+                form.reset();
+              } else {
+                // e.g. a missing or wrong access_key. Not the visitor's problem —
+                // show the friendly fallback and put the real reason in the console.
+                console.error("[BCM form] Submission rejected:", r.data);
+                say(FALLBACK, true);
+              }
+            })
+            .catch(function (err) {
+              console.error("[BCM form] Network error:", err);
+              say(FALLBACK, true);
+            })
+            .finally(function () {
+              busy(false);
+            });
+        });
+      })();
+    </script>
+  </body>
+</html>
