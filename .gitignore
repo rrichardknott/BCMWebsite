@@ -1,0 +1,16 @@
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+*.code-workspace
+
+# Backups and scratch
+*.bak
+*.tmp
+~$*
+
+# Large source asset — the site uses the removebg version instead
+images/bcm-logo-3.png
