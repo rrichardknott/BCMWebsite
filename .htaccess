@@ -1,0 +1,20 @@
+# Bible Church Mission — redirects from the old multi-page site
+# to sections of the new one-page site.
+
+# Don't let visitors browse folder contents like /images/
+Options -Indexes
+
+RewriteEngine On
+
+# Old pages → sections of the new page
+RewriteRule ^biblech\.html$   /#start      [R=301,NE,L]
+RewriteRule ^board\.html$     /#news       [R=301,NE,L]
+RewriteRule ^bcmdoc\.html$    /#news       [R=301,NE,L]
+RewriteRule ^resources\.html$ /#news       [R=301,NE,L]
+RewriteRule ^help\.html$      /#help       [R=301,NE,L]
+RewriteRule ^news\.html$      /#signupForm [R=301,NE,L]
+RewriteRule ^contact\.html$   /#signupForm [R=301,NE,L]
+
+# Old PDF locations → new PDF locations
+RewriteRule ^docs/pur-bcm\.pdf$   /documents/BCM-ACloserLook.pdf        [R=301,L]
+RewriteRule ^docs/pur-bcmsp\.pdf$ /documents/BCM-ACloserLookSpanish.pdf [R=301,L]
